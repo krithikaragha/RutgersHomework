@@ -23,6 +23,7 @@ with open(csvpath, 'r', errors='ignore') as fileHandle:
 
     greatest_increase_profit_loss = max(profits_and_losses)
     greatest_decrease_profit_loss = min(profits_and_losses)
+    average_change = total / len(profits_and_losses)
 
     for k, v in budget_dict.items():
         if v == greatest_increase_profit_loss:
@@ -34,7 +35,8 @@ with open(csvpath, 'r', errors='ignore') as fileHandle:
     print("Financial Analysis")
     print("---------------------------------------------")
     print("Total months: ", len(months))
-    print("Total: ", total)
+    print("Total: $", total)
+    print("Average Change: $%.2f" % average_change)
     print("Greatest increase in profits: ", greatest_increase_month, "($",greatest_increase_profit_loss,")")
     print("Greatest decrease in profits: ", greatest_decrease_month, "($",greatest_decrease_profit_loss,")")
 
@@ -44,8 +46,11 @@ f.write("---------------------------------------------\n")
 f.write("Total months: ")
 f.write(str(len(months)))
 f.write("\n")
-f.write("Total: ")
+f.write("Total: $")
 f.write(str(total))
+f.write("\n")
+f.write("Average Change: $")
+f.write(str(str(average_change)))
 f.write("\n")
 f.write("Greatest increase in profits: ")
 f.write(str(greatest_increase_month))
