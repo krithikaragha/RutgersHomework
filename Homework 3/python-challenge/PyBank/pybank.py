@@ -20,10 +20,10 @@ with open(csvpath, 'r', errors='ignore') as fileHandle:
         total = total + int(row[1])
         profits_and_losses.append(int(row[1]))
         budget_dict[row[0]] = int(row[1])
-
+    
     greatest_increase_profit_loss = max(profits_and_losses)
     greatest_decrease_profit_loss = min(profits_and_losses)
-    average_change = total / len(profits_and_losses)
+    average_change = (profits_and_losses[-1] - profits_and_losses[0]) / (len(profits_and_losses) - 1)
 
     for k, v in budget_dict.items():
         if v == greatest_increase_profit_loss:
