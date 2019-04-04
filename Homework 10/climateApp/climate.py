@@ -52,7 +52,7 @@ def welcome():
 def precipitation():
     """ Return a JSON list of all precipitation data as a dictionary with date as key and precipitation as value"""
     # Query all precipitation
-    precipitation_results = session.query(Measurement).all()
+    precipitation_results = session.query(Measurement.prcp).all()
 
     # Create a dictionary from the row data and append to a list of all_precipitation
     all_precipitation = []
