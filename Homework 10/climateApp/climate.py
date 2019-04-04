@@ -92,9 +92,13 @@ def tobs_start(startDate):
     # Query all tobs greater than and equal to startDate
     minAveMaxTobs =  session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= startDate).all()
-    tmin = minAveMaxTobs[0][0]
-    tave = minAveMaxTobs[0][1]
-    tmax = minAveMaxTobs[0][2]
+
+    # Convert list of tuples into normal list
+
+    minAveMaxTobsList = list(np.ravel(minAveMaxTobs))
+    tmin = minAveMaxTobsList[0]
+    tave = minAveMaxTobsList[1]
+    tmax = minAveMaxTobsList[2]
 
     return jsonify(tmin, tave, tmax)
 
@@ -104,9 +108,13 @@ def tobs_start_end(startDate, endDate):
     # Query all tobs between startDate and endDate inclusive
     min_ave_max_tobs = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= startDate).filter(Measurement.date <= endDate).all()
-    tmin = min_ave_max_tobs[0][0]
-    tave = min_ave_max_tobs[0][1]
-    tmax = min_ave_max_tobs[0][2]
+
+    # Convert list of tuples into normal list
+    min_ave_max_tobs_list = list(np.ravel(min_ave_max_tobs))
+    
+    tmin = min_ave_max_tobs_list[0]
+    tave = min_ave_max_tobs_list[1]
+    tmax = min_ave_max_tobs_list[2]
 
     return jsonify(tmin, tave, tmax)
 
