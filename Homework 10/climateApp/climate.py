@@ -58,8 +58,7 @@ def precipitation():
     all_precipitation = []
     for precipitation in precipitation_results:
         precipitation_dict = {}
-        precipitation_dict["date"] = precipitation.date
-        precipitation_dict["prc"] = precipitation.prcp
+        precipitation_dict[precipitation.date] = precipitation.prcp
         all_precipitation.append(precipitation_dict)
 
     return jsonify(all_precipitation)
