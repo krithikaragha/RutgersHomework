@@ -94,8 +94,8 @@ def tobs_start(startDate):
         filter(Measurement.date >= startDate).all()
 
     # Convert list of tuples into normal list
-
     minAveMaxTobsList = list(np.ravel(minAveMaxTobs))
+    
     tmin = minAveMaxTobsList[0]
     tave = minAveMaxTobsList[1]
     tmax = minAveMaxTobsList[2]
@@ -111,7 +111,7 @@ def tobs_start_end(startDate, endDate):
 
     # Convert list of tuples into normal list
     min_ave_max_tobs_list = list(np.ravel(min_ave_max_tobs))
-    
+
     tmin = min_ave_max_tobs_list[0]
     tave = min_ave_max_tobs_list[1]
     tmax = min_ave_max_tobs_list[2]
